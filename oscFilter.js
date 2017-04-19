@@ -13,7 +13,7 @@ console.log('forwarding messages to socket.io on http://127.0.0.1:'+ sendingPort
 
 var oscServer, oscClient;
 
-var client = new osc.Client('10.0.1.4', 4444);
+var client = new osc.Client('192.168.100.10', 4444);
 /*console.log('sending test message to 10.0.1.4:4444');
 client.send('/oscAddress', 200, function (err) {
 	if(err){
@@ -23,8 +23,8 @@ client.send('/oscAddress', 200, function (err) {
 });*/
 
 
-//var ip = '127.0.0.1';
-var ip = '10.0.1.4';
+var ip = '127.0.0.1';
+//var ip = '10.0.1.4';
 //this is where we are listening for OSC messages
 console.log('listening to OSC messages on ' + ip + ':'+ listeningPort);
  oscServer = new osc.Server(listeningPort, ip);
@@ -43,7 +43,7 @@ console.log('listening to OSC messages on ' + ip + ':'+ listeningPort);
      if(id == '/muse/elements/alpha_relative'){
 
      var msg2 = new osc.Message(id); 
-
+        console.log('oscMsg.length',oscMsg.length);
       for(var i=1; i<oscMsg.length; i++){
     	msg2.append(oscMsg[i]); 
     }
